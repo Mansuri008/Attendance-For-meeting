@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Meeting Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Team Meeting Attendance Portal</h2>
+    <form id="attendanceForm">
+        <label for="name">Name:</label>
+        <select id="name" required>
+            <option value="">Select a team member</option>
+            <option value="Belim, Arbaj Nasirmiya">Belim, Arbaj Nasirmiya</option>
+            <option value="Devi, Simran">Devi, Simran</option>
+            <option value="Mansuri, Afnan">Mansuri, Afnan</option>
+            <option value="Pandya, Ruchikaben">Pandya, Ruchikaben</option>
+            <option value="Patel, Ruchi Sunil">Patel, Ruchi Sunil</option>
+            <option value="Patel, Bhoomiben">Patel, Bhoomiben</option>
+            <option value="Visani, Anjali">Visani, Anjali</option>
+        </select>
+        <label for="status">Status:</label>
+        <select id="status">
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+            <option value="Late">Late</option>
+        </select>
+        <button type="button" onclick="markAttendance()">Mark Attendance</button>
+    </form>
+    
+    <table id="attendanceTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <script>
+        function markAttendance() {
+            var name = document.getElementById("name").value;
+            var status = document.getElementById("status").value;
+            
+            if (name.trim() === "") {
+                alert("Please select a name.");
+                return;
+            }
+            
+            var table = document.getElementById("attendanceTable").getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+            var nameCell = newRow.insertCell(0);
+            var statusCell = newRow.insertCell(1);
+            
+            nameCell.textContent = name;
+            statusCell.textContent = status;
+            
+            document.getElementById("attendanceForm").reset();
+        }
+    </script>
+</body>
+</html>
